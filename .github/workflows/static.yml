@@ -48,4 +48,3 @@ jobs:
       - name: Test deployment
         run: |
           curl -f https://diwas2057.github.io/CICD || exit 1
-diwas2057.github.io
