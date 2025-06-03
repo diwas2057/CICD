@@ -1,0 +1,24 @@
+name: Upload to GitHub Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Rebuild Output File
+        run: |
+          mkdir -p output
+          echo "Release build output - $(date)" > output/release-output.txt
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: output/release-output.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
