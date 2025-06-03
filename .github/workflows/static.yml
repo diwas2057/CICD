@@ -14,9 +14,9 @@ jobs:
         mkdir -p output
         echo "Hello World" > output/hello.txt
 
-    - name: Upload Artifact
+    - name:  Upload output as Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: hello-artifact
-        path: output/hello.txt
-
+        name: script-output
+        path: output/output.txt
+        retention-days: 30
